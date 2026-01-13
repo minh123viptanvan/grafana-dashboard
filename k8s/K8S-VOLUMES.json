@@ -1,7 +1,7 @@
 {
   "__inputs": [
     {
-      "name": "DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS",
+      "name": "DS__VICTORIAMETRICS",
       "label": "victoria-metrics-cluster-k8s-stack-prometheus",
       "description": "",
       "type": "datasource",
@@ -81,7 +81,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+        "uid": "${DS__VICTORIAMETRICS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -141,7 +141,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "expr": "(\n  count (\n    (kubelet_volume_stats_available_bytes{namespace=~\"${k8s_namespace}\"})\n    and\n    (predict_linear(kubelet_volume_stats_available_bytes{namespace=~\"${k8s_namespace}\"}[1d], 2 * 24 * 60 * 60) < 0)\n  )\n)\nor\nvector(0)",
           "instant": true,
@@ -162,7 +162,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+        "uid": "${DS__VICTORIAMETRICS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -222,7 +222,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "expr": "(\n  count (\n    (kubelet_volume_stats_available_bytes{namespace=~\"${k8s_namespace}\"})\n    and\n    (predict_linear(kubelet_volume_stats_available_bytes{namespace=~\"${k8s_namespace}\"}[1d], 5 * 24 * 60 * 60) < 0)\n  )\n)\nor\nvector(0)",
           "instant": true,
@@ -243,7 +243,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+        "uid": "${DS__VICTORIAMETRICS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -303,7 +303,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "expr": "(\n  count (\n    (kubelet_volume_stats_available_bytes{namespace=~\"${k8s_namespace}\"})\n    and\n    (predict_linear(kubelet_volume_stats_available_bytes{namespace=~\"${k8s_namespace}\"}[1d], 7 * 24 * 60 * 60) < 0)\n  )\n)\nor\nvector(0)",
           "instant": true,
@@ -324,7 +324,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+        "uid": "${DS__VICTORIAMETRICS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -383,7 +383,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "expr": "count (max by (persistentvolumeclaim,namespace) (kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"} ) and (max by (persistentvolumeclaim,namespace) (kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"} )) / (max by (persistentvolumeclaim,namespace) (kubelet_volume_stats_capacity_bytes{namespace=~\"${k8s_namespace}\"} )) >= (${warning_threshold} / 100)) or vector (0)",
           "instant": true,
@@ -398,7 +398,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+        "uid": "${DS__VICTORIAMETRICS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -458,7 +458,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "expr": "count((kube_persistentvolumeclaim_status_phase{namespace=~\"${k8s_namespace}\",phase=\"Pending\"}==1)) or vector(0)",
           "instant": true,
@@ -479,7 +479,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+        "uid": "${DS__VICTORIAMETRICS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -539,7 +539,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "expr": "count((kube_persistentvolumeclaim_status_phase{namespace=~\"${k8s_namespace}\",phase=\"Lost\"}==1)) or vector(0)",
           "instant": true,
@@ -570,7 +570,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -815,7 +815,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": " sum by (persistentvolumeclaim,namespace,storageclass,volumename) (kube_persistentvolumeclaim_info{namespace=~\"${k8s_namespace}\"})",
               "format": "table",
@@ -827,7 +827,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "sum by (persistentvolumeclaim) (kubelet_volume_stats_capacity_bytes{namespace=~\"${k8s_namespace}\"}/1024/1024/1024)",
               "format": "table",
@@ -839,7 +839,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "sum by (persistentvolumeclaim) (kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"}/1024/1024/1024)",
               "format": "table",
@@ -851,7 +851,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "sum by (persistentvolumeclaim) (kubelet_volume_stats_available_bytes{namespace=~\"${k8s_namespace}\"}/1024/1024/1024)",
               "format": "table",
@@ -863,7 +863,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "sum(kube_persistentvolumeclaim_status_phase{namespace=~\"${k8s_namespace}\",phase=~\"(Pending|Lost)\"}) by (persistentvolumeclaim) + sum(kube_persistentvolumeclaim_status_phase{namespace=~\"${k8s_namespace}\",phase=~\"(Lost)\"}) by (persistentvolumeclaim)",
               "format": "table",
@@ -875,7 +875,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "sum by (persistentvolumeclaim) (kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"}/kubelet_volume_stats_capacity_bytes{namespace=~\"${k8s_namespace}\"} * 100)",
               "format": "table",
@@ -933,7 +933,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -982,7 +982,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "kube_storageclass_info",
               "format": "table",
@@ -1075,7 +1075,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1165,7 +1165,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "(max by (persistentvolumeclaim,namespace) (kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"}))",
               "interval": "",
@@ -1193,7 +1193,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1216,7 +1216,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "rate(kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"}[1h])",
               "instant": false,
@@ -1231,7 +1231,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1254,7 +1254,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "rate(kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"}[1d])",
               "interval": "",
@@ -1268,7 +1268,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+            "uid": "${DS__VICTORIAMETRICS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1291,7 +1291,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+                "uid": "${DS__VICTORIAMETRICS}"
               },
               "expr": "rate(kubelet_volume_stats_used_bytes{namespace=~\"${k8s_namespace}\"}[1w])",
               "instant": false,
@@ -1329,7 +1329,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_VICTORIA-METRICS-CLUSTER-K8S-STACK-PROMETHEUS}"
+          "uid": "${DS__VICTORIAMETRICS}"
         },
         "definition": "label_values(namespace)",
         "includeAll": true,
