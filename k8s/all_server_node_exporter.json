@@ -2530,7 +2530,7 @@
                                                 "name": "${ds_metrics}"
                                             },
                                             "spec": {
-                                                "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
+                                                "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
                                                 "format": "time_series",
                                                 "instant": false,
                                                 "interval": "",
@@ -3157,7 +3157,7 @@
                                                 "name": "${ds_metrics}"
                                             },
                                             "spec": {
-                                                "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"})*100 /(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}))",
+                                                "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint=\"$maxmount\"})*100 /(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint=\"$maxmount\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint=\"$maxmount\"}))",
                                                 "instant": true,
                                                 "interval": "",
                                                 "legendFormat": "Used Max Mount($maxmount)"
@@ -3496,7 +3496,7 @@
                                                 "name": "${ds_metrics}"
                                             },
                                             "spec": {
-                                                "expr": "node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
+                                                "expr": "node_filesystem_size_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
                                                 "format": "table",
                                                 "instant": true,
                                                 "interval": "",
@@ -3519,7 +3519,7 @@
                                                 "name": "${ds_metrics}"
                                             },
                                             "spec": {
-                                                "expr": "node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
+                                                "expr": "node_filesystem_avail_bytes {instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
                                                 "format": "table",
                                                 "instant": true,
                                                 "interval": "10s",
@@ -3542,7 +3542,7 @@
                                                 "name": "${ds_metrics}"
                                             },
                                             "spec": {
-                                                "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
+                                                "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"zfs|ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
                                                 "format": "table",
                                                 "instant": true,
                                                 "interval": "",
