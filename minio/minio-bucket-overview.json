@@ -1,650 +1,781 @@
 {
-    "apiVersion": "dashboard.grafana.app/v2",
-    "kind": "Dashboard",
-    "metadata": {
-        "name": "efubm4a2bqhvkc",
-        "generation": 7,
-        "creationTimestamp": "2026-08-06T02:23:00Z",
-        "labels": {},
-        "annotations": {}
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "efubm4a2bqhvkc",
+    "namespace": "default",
+    "uid": "08cd614d-b7d2-4979-9859-41195db07834",
+    "resourceVersion": "1788921173899908",
+    "generation": 2,
+    "creationTimestamp": "2026-09-02T02:21:12Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "800064178106368"
     },
-    "spec": {
-        "annotations": [
-            {
-                "kind": "AnnotationQuery",
-                "spec": {
-                    "query": {
-                        "kind": "DataQuery",
-                        "group": "grafana",
-                        "version": "v0",
-                        "spec": {},
-                        "labels": {
-                            "grafana.app/export-label": "grafana-1"
-                        }
-                    },
-                    "enable": true,
-                    "hide": true,
-                    "iconColor": "rgba(0, 211, 255, 1)",
-                    "name": "Annotations & Alerts",
-                    "builtIn": true,
-                    "legacyOptions": {
-                        "type": "dashboard"
-                    }
-                }
-            }
-        ],
-        "cursorSync": "Off",
-        "editable": true,
-        "elements": {
-            "panel-1": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 1,
-                    "title": "Bucket size",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "${ds}"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "minio_bucket_usage_total_bytes{project=~\"$project\"}",
-                                                "instant": false,
-                                                "legendFormat": "{{bucket}}",
-                                                "range": true
-                                            },
-                                            "labels": {
-                                                "grafana.app/export-label": "prometheus-1",
-                                                "grafana.app/export-datasource-name": "Thanos"
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "timeseries",
-                        "version": "",
-                        "spec": {
-                            "options": {
-                                "legend": {
-                                    "calcs": [
-                                        "lastNotNull",
-                                        "min",
-                                        "max",
-                                        "diff"
-                                    ],
-                                    "displayMode": "table",
-                                    "placement": "right",
-                                    "showLegend": true
-                                },
-                                "tooltip": {
-                                    "mode": "single",
-                                    "sort": "none"
-                                }
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "unit": "bytes",
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": null,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "palette-classic"
-                                    },
-                                    "custom": {
-                                        "axisBorderShow": false,
-                                        "axisCenteredZero": false,
-                                        "axisColorMode": "text",
-                                        "axisLabel": "",
-                                        "axisPlacement": "auto",
-                                        "barAlignment": 0,
-                                        "barWidthFactor": 0.6,
-                                        "drawStyle": "line",
-                                        "fillOpacity": 0,
-                                        "gradientMode": "none",
-                                        "hideFrom": {
-                                            "legend": false,
-                                            "tooltip": false,
-                                            "viz": false
-                                        },
-                                        "insertNulls": false,
-                                        "lineInterpolation": "linear",
-                                        "lineWidth": 1,
-                                        "pointSize": 5,
-                                        "scaleDistribution": {
-                                            "type": "linear"
-                                        },
-                                        "showPoints": "auto",
-                                        "spanNulls": false,
-                                        "stacking": {
-                                            "group": "A",
-                                            "mode": "none"
-                                        },
-                                        "thresholdsStyle": {
-                                            "mode": "off"
-                                        }
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-2": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 2,
-                    "title": "Total object on bucket",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "${ds}"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "minio_bucket_usage_object_total{project=~\"$project\"}",
-                                                "instant": false,
-                                                "legendFormat": "{{bucket}}",
-                                                "range": true
-                                            },
-                                            "labels": {
-                                                "grafana.app/export-label": "prometheus-1",
-                                                "grafana.app/export-datasource-name": "Thanos"
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "timeseries",
-                        "version": "",
-                        "spec": {
-                            "options": {
-                                "legend": {
-                                    "calcs": [
-                                        "lastNotNull",
-                                        "min",
-                                        "max",
-                                        "diff"
-                                    ],
-                                    "displayMode": "table",
-                                    "placement": "right",
-                                    "showLegend": true
-                                },
-                                "tooltip": {
-                                    "mode": "single",
-                                    "sort": "none"
-                                }
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "unit": "short",
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": null,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "palette-classic"
-                                    },
-                                    "custom": {
-                                        "axisBorderShow": false,
-                                        "axisCenteredZero": false,
-                                        "axisColorMode": "text",
-                                        "axisLabel": "",
-                                        "axisPlacement": "auto",
-                                        "barAlignment": 0,
-                                        "barWidthFactor": 0.6,
-                                        "drawStyle": "line",
-                                        "fillOpacity": 0,
-                                        "gradientMode": "none",
-                                        "hideFrom": {
-                                            "legend": false,
-                                            "tooltip": false,
-                                            "viz": false
-                                        },
-                                        "insertNulls": false,
-                                        "lineInterpolation": "linear",
-                                        "lineWidth": 1,
-                                        "pointSize": 5,
-                                        "scaleDistribution": {
-                                            "type": "linear"
-                                        },
-                                        "showPoints": "auto",
-                                        "spanNulls": false,
-                                        "stacking": {
-                                            "group": "A",
-                                            "mode": "none"
-                                        },
-                                        "thresholdsStyle": {
-                                            "mode": "off"
-                                        }
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-3": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 3,
-                    "title": "Bucket usage/quouta",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "${ds}"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "exemplar": false,
-                                                "expr": "max by (bucket) (minio_bucket_usage_total_bytes{project=~\"$project\"})",
-                                                "format": "table",
-                                                "instant": true,
-                                                "legendFormat": "{{bucket}}",
-                                                "range": false
-                                            },
-                                            "labels": {
-                                                "grafana.app/export-label": "prometheus-1",
-                                                "grafana.app/export-datasource-name": "Thanos"
-                                            }
-                                        },
-                                        "refId": "usage",
-                                        "hidden": false
-                                    }
-                                },
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "${ds}"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "exemplar": false,
-                                                "expr": "max by (bucket) (minio_bucket_quota_total_bytes{project=~\"$project\" }) ",
-                                                "format": "table",
-                                                "instant": true,
-                                                "legendFormat": "{{bucket}}",
-                                                "range": false
-                                            },
-                                            "labels": {
-                                                "grafana.app/export-label": "prometheus-1",
-                                                "grafana.app/export-datasource-name": "Thanos"
-                                            }
-                                        },
-                                        "refId": "qouta",
-                                        "hidden": false
-                                    }
-                                },
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "${ds}"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "exemplar": false,
-                                                "expr": "max by (bucket) (minio_bucket_quota_total_bytes{project=~\"$project\" })  - max by (bucket) (minio_bucket_usage_total_bytes{project=~\"$project\"})",
-                                                "format": "table",
-                                                "instant": true,
-                                                "legendFormat": "__auto",
-                                                "range": false
-                                            },
-                                            "labels": {
-                                                "grafana.app/export-label": "prometheus-1",
-                                                "grafana.app/export-datasource-name": "Thanos"
-                                            }
-                                        },
-                                        "refId": "free",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [
-                                {
-                                    "kind": "Transformation",
-                                    "group": "merge",
-                                    "spec": {
-                                        "disabled": true,
-                                        "options": {}
-                                    }
-                                },
-                                {
-                                    "kind": "Transformation",
-                                    "group": "joinByField",
-                                    "spec": {
-                                        "options": {
-                                            "byField": "bucket",
-                                            "mode": "outer"
-                                        }
-                                    }
-                                },
-                                {
-                                    "kind": "Transformation",
-                                    "group": "organize",
-                                    "spec": {
-                                        "options": {
-                                            "excludeByName": {
-                                                "Time 1": true,
-                                                "Time 2": true,
-                                                "Time 3": true
-                                            },
-                                            "includeByName": {},
-                                            "indexByName": {
-                                                "Time 1": 0,
-                                                "Time 2": 4,
-                                                "Time 3": 6,
-                                                "Value #free": 3,
-                                                "Value #qouta": 5,
-                                                "Value #usage": 2,
-                                                "bucket": 1
-                                            },
-                                            "renameByName": {
-                                                "Time 2": "",
-                                                "Value #free": "free",
-                                                "Value #qouta": "qouta",
-                                                "Value #usage": "usage"
-                                            }
-                                        }
-                                    }
-                                }
-                            ],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "table",
-                        "version": "11.2.0",
-                        "spec": {
-                            "options": {
-                                "cellHeight": "sm",
-                                "footer": {
-                                    "countRows": false,
-                                    "fields": "",
-                                    "reducer": [
-                                        "sum"
-                                    ],
-                                    "show": true
-                                },
-                                "showHeader": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "unit": "bytes",
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": null,
-                                                "color": "green"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "thresholds"
-                                    },
-                                    "custom": {
-                                        "align": "auto",
-                                        "cellOptions": {
-                                            "type": "auto"
-                                        },
-                                        "filterable": true,
-                                        "inspect": false
-                                    }
-                                },
-                                "overrides": [
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "Value #qouta"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "noValue",
-                                                "value": "unlimit"
-                                            },
-                                            {
-                                                "id": "mappings",
-                                                "value": []
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "Value #free"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "noValue",
-                                                "value": "unlimit"
-                                            },
-                                            {
-                                                "id": "thresholds",
-                                                "value": {
-                                                    "mode": "absolute",
-                                                    "steps": [
-                                                        {
-                                                            "color": "green"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "layout": {
-            "kind": "GridLayout",
-            "spec": {
-                "items": [
-                    {
-                        "kind": "GridLayoutItem",
-                        "spec": {
-                            "x": 0,
-                            "y": 0,
-                            "width": 12,
-                            "height": 8,
-                            "element": {
-                                "kind": "ElementReference",
-                                "name": "panel-1"
-                            }
-                        }
-                    },
-                    {
-                        "kind": "GridLayoutItem",
-                        "spec": {
-                            "x": 12,
-                            "y": 0,
-                            "width": 12,
-                            "height": 8,
-                            "element": {
-                                "kind": "ElementReference",
-                                "name": "panel-2"
-                            }
-                        }
-                    },
-                    {
-                        "kind": "GridLayoutItem",
-                        "spec": {
-                            "x": 0,
-                            "y": 8,
-                            "width": 12,
-                            "height": 8,
-                            "element": {
-                                "kind": "ElementReference",
-                                "name": "panel-3"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "links": [],
-        "liveNow": false,
-        "preload": false,
-        "tags": [
-            "minio"
-        ],
-        "timeSettings": {
-            "timezone": "browser",
-            "from": "now-5m",
-            "to": "now",
-            "autoRefresh": "",
-            "autoRefreshIntervals": [
-                "5s",
-                "10s",
-                "30s",
-                "1m",
-                "5m",
-                "15m",
-                "30m",
-                "1h",
-                "2h",
-                "1d"
-            ],
-            "hideTimepicker": false,
-            "fiscalYearStartMonth": 0
-        },
-        "title": "Minio Bucket Overview",
-        "variables": [
-            {
-                "kind": "DatasourceVariable",
-                "spec": {
-                    "name": "ds",
-                    "pluginId": "prometheus",
-                    "refresh": "onDashboardLoad",
-                    "regex": "",
-                    "current": {
-                        "text": "",
-                        "value": ""
-                    },
-                    "options": [],
-                    "multi": false,
-                    "includeAll": false,
-                    "hide": "dontHide",
-                    "skipUrlSync": false,
-                    "allowCustomValue": true
-                }
-            },
-            {
-                "kind": "QueryVariable",
-                "spec": {
-                    "name": "project",
-                    "current": {
-                        "text": "",
-                        "value": ""
-                    },
-                    "hide": "dontHide",
-                    "refresh": "onDashboardLoad",
-                    "skipUrlSync": false,
-                    "query": {
-                        "kind": "DataQuery",
-                        "group": "prometheus",
-                        "version": "v0",
-                        "datasource": {
-                            "name": "${ds}"
-                        },
-                        "spec": {
-                            "qryType": 1,
-                            "query": "label_values(minio_cluster_health_status,project)",
-                            "refId": "PrometheusVariableQueryEditor-VariableQuery"
-                        },
-                        "labels": {
-                            "grafana.app/export-label": "prometheus-1",
-                            "grafana.app/export-datasource-name": "Thanos"
-                        }
-                    },
-                    "regex": "",
-                    "sort": "disabled",
-                    "definition": "label_values(minio_cluster_health_status,project)",
-                    "options": [],
-                    "multi": false,
-                    "includeAll": false,
-                    "allowCustomValue": true
-                }
-            }
-        ]
+    "annotations": {
+      "grafana.app/createdBy": "user:ff8mxfmycv20wc",
+      "grafana.app/folder": "bfvtwpkmhjcowc",
+      "grafana.app/managedBy": "classic-file-provisioning",
+      "grafana.app/managerId": "s3",
+      "grafana.app/sourceChecksum": "eef871998794c45395af4276fcf90bd9",
+      "grafana.app/sourcePath": "/var/lib/grafana/dashboards/s3/minio-bucket-overview.json",
+      "grafana.app/sourceTimestamp": "1788921160000",
+      "grafana.app/updatedBy": "access-policy:service",
+      "grafana.app/updatedTimestamp": "2026-09-09T02:32:53Z",
+      "grafana.app/folderTitle": "s3",
+      "grafana.app/folderUrl": "/dashboards/f/bfvtwpkmhjcowc/s3"
     }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "builtIn": true,
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "query": {
+            "group": "grafana",
+            "kind": "DataQuery",
+            "spec": {},
+            "version": "v0"
+          }
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "${ds}"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "minio_bucket_usage_total_bytes{project=~\"$project\"}",
+                        "instant": false,
+                        "legendFormat": "{{bucket}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 1,
+          "links": [],
+          "title": "Bucket size",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "bytes"
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [
+                    "lastNotNull",
+                    "min",
+                    "max",
+                    "diff"
+                  ],
+                  "displayMode": "table",
+                  "placement": "right",
+                  "showLegend": true,
+                  "sortBy": "Last *",
+                  "sortDesc": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "13.2.1"
+          }
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "${ds}"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "minio_bucket_usage_object_total{project=~\"$project\"}",
+                        "instant": false,
+                        "legendFormat": "{{bucket}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 2,
+          "links": [],
+          "title": "Total object on bucket",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "short"
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [
+                    "lastNotNull",
+                    "min",
+                    "max",
+                    "diff"
+                  ],
+                  "displayMode": "table",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "13.2.1"
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "${ds}"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "max by (bucket) (minio_bucket_usage_total_bytes{project=~\"$project\"})",
+                        "format": "table",
+                        "instant": true,
+                        "legendFormat": "{{bucket}}",
+                        "range": false
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "usage"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "${ds}"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "max by (bucket) (minio_bucket_quota_total_bytes{project=~\"$project\" }) ",
+                        "format": "table",
+                        "instant": true,
+                        "legendFormat": "{{bucket}}",
+                        "range": false
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "qouta"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "${ds}"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "max by (bucket) (minio_bucket_quota_total_bytes{project=~\"$project\" })  - max by (bucket) (minio_bucket_usage_total_bytes{project=~\"$project\"})",
+                        "format": "table",
+                        "instant": true,
+                        "legendFormat": "__auto",
+                        "range": false
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "free"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "group": "merge",
+                  "kind": "Transformation",
+                  "spec": {
+                    "disabled": true,
+                    "options": {}
+                  }
+                },
+                {
+                  "group": "joinByField",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "byField": "bucket",
+                      "mode": "outer"
+                    }
+                  }
+                },
+                {
+                  "group": "organize",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "Time 1": true,
+                        "Time 2": true,
+                        "Time 3": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "Time 1": 0,
+                        "Time 2": 4,
+                        "Time 3": 6,
+                        "Value #free": 3,
+                        "Value #qouta": 5,
+                        "Value #usage": 2,
+                        "bucket": 1
+                      },
+                      "renameByName": {
+                        "Time 2": "",
+                        "Value #free": "free",
+                        "Value #qouta": "qouta",
+                        "Value #usage": "usage"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 3,
+          "links": [],
+          "title": "Bucket usage/quouta",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": [
+                        "sum"
+                      ]
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "bytes"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Value #qouta"
+                    },
+                    "properties": [
+                      {
+                        "id": "noValue",
+                        "value": "unlimit"
+                      },
+                      {
+                        "id": "mappings",
+                        "value": []
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Value #free"
+                    },
+                    "properties": [
+                      {
+                        "id": "noValue",
+                        "value": "unlimit"
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "green",
+                              "value": 0
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "13.2.1"
+          }
+        }
+      },
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "${ds}"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "(\r\n                sum by (project, server, api) (rate(minio_s3_requests_ttfb_seconds_distribution{job=~\".*cluster\", le=\"10.000\"}[5m]))\r\n                -\r\n                sum by (project, server, api) (rate(minio_s3_requests_ttfb_seconds_distribution{job=~\".*cluster\", le=\"0.500\"}[5m]))\r\n              )\r\n              /\r\n              sum by (project, server, api) (rate(minio_s3_requests_ttfb_seconds_distribution{job=~\".*cluster\", le=\"10.000\"}[5m]) > 0)",
+                        "legendFormat": "{{api}} {{server}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 4,
+          "links": [],
+          "title": "P95 latency API",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "s"
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [
+                    "lastNotNull",
+                    "min",
+                    "max",
+                    "p95"
+                  ],
+                  "displayMode": "table",
+                  "enableFacetedFilter": true,
+                  "placement": "right",
+                  "showLegend": true,
+                  "sortBy": "Last *",
+                  "sortDesc": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "13.2.1"
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 8
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-4"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 8
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [
+      "minio"
+    ],
+    "timeSettings": {
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "fiscalYearStartMonth": 0,
+      "from": "now-5m",
+      "hideTimepicker": false,
+      "timezone": "browser",
+      "to": "now"
+    },
+    "title": "Minio Bucket Overview",
+    "variables": [
+      {
+        "kind": "DatasourceVariable",
+        "spec": {
+          "allowCustomValue": true,
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "hide": "dontHide",
+          "includeAll": false,
+          "multi": false,
+          "name": "ds",
+          "options": [],
+          "pluginId": "prometheus",
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "skipUrlSync": false
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "allowCustomValue": true,
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "definition": "label_values(minio_cluster_health_status,project)",
+          "hide": "dontHide",
+          "includeAll": false,
+          "multi": false,
+          "name": "project",
+          "options": [],
+          "query": {
+            "datasource": {
+              "name": "${ds}"
+            },
+            "group": "prometheus",
+            "kind": "DataQuery",
+            "spec": {
+              "qryType": 1,
+              "query": "label_values(minio_cluster_health_status,project)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "version": "v0"
+          },
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "regexApplyTo": "value",
+          "skipUrlSync": false,
+          "sort": "disabled"
+        }
+      }
+    ]
+  }
 }
